@@ -1,0 +1,67 @@
+{
+    "name": "kavw/psr15-middleware",
+    "description": "The PSR-15 middleware implementation",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Anton Kurnosov",
+            "email": "kavww@proton.me"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "psr/http-server-handler": "^1.0",
+        "psr/http-server-middleware": "^1.0"
+    },
+    "require-dev": {
+        "ergebnis/composer-normalize": "^2.36",
+        "nyholm/psr7": "^1.8",
+        "phpstan/phpstan": "^1.10",
+        "phpunit/phpunit": "^10.3",
+        "squizlabs/php_codesniffer": "^3.7",
+        "vimeo/psalm": "^5.15"
+    },
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "Kavw\\Psr15Middleware\\": "src/",
+            "Kavw\\Psr15Middleware\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true,
+            "ergebnis/composer-normalize": true
+        },
+        "sort-packages": true
+    },
+    "scripts": {
+        "check": [
+            "@cs",
+            "@stan",
+            "@psalm",
+            "@test"
+        ],
+        "cs": [
+            "Composer\\Config::disableProcessTimeout",
+            "phpcs"
+        ],
+        "cs-fix": [
+            "Composer\\Config::disableProcessTimeout",
+            "phpcbf ./src"
+        ],
+        "psalm": [
+            "Composer\\Config::disableProcessTimeout",
+            "psalm"
+        ],
+        "stan": [
+            "Composer\\Config::disableProcessTimeout",
+            "phpstan"
+        ],
+        "test": [
+            "Composer\\Config::disableProcessTimeout",
+            "phpunit"
+        ]
+    }
+}
